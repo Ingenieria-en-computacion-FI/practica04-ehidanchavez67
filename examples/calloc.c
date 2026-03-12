@@ -11,6 +11,7 @@ array = (int *)calloc(num, sizeof(int));
 
 if (array!=NULL) {
 for(i=0; i < num; i++){
+    printf("Elemento[%d]:\n",i);
     scanf("%d", (array+i));
 }
     
