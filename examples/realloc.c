@@ -1,30 +1,37 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 int main (){
-  // TODO(1): Declara dos apuntadores a entero llamados array, array2
-  // TODO(2): Declara una variable para indicar cuantos elementos se requieren
-  
-  printf("¿Cuantos elementos tiene el conjunto?\n");
-  // TODO(3): Lee el numero de elementos
-  // TODO(4): Usando una llamada a malloc reserva la memoria para array
-  
-  if (array!=NULL) {
-    // TODO(5): Usando un ciclo for inserta los datos en el arreglo
-    printf("[ ");
-    // TODO(6): Usando un ciclo for imprime la información en el arreglo
-    printf("]\n");
+int *array, *array2;
+int num,i;
 
-    // TODO(7): Asigna a array2, el arreglo duplicando su tamaño usando realloc
-     if (array2!=NULL) {
-        // TODO(8): Usando un ciclo for inserta los datos faltantes en el arreglo
-        printf("[ ");
-        // TODO(9): Usando un ciclo for imprime la información en el arreglo
-        printf("]\n");
-      }
-    
-    // TODO(10): libera la memoria reservada por realloc
-  }
-  return 0;
+printf("¿Cuantos elementos tiene el conjunto?\n");
+scanf("%d", &num);
+array = (int*) malloc(num*sizeof(int));
+
+if (array!=NULL) {
+    for(i=0; i < num; i++){
+        printf("Ingresa[%d]\n",i);
+        scanf("%d",(array + i));
+    }
+    printf("[ ");
+    for(i = 0; i < num; i++) {
+        printf("Valor insertado: %d\n", *(array + i));
+    }
+    printf("]\n");
+}
+array2 = (int*)realloc(array,num*2*sizeof(int));
+ if (array2!=NULL) {
+    for(i = num; i < 2*num; i++) {
+        printf("Ingresa [%d]\n", i);
+        scanf("%d", (array2+i));
+     }
+    printf("]\n");
+    for(i=0; i<2*num; i++) {
+        printf("%d ", *(array2+i));
+    }
+    printf("]\n");
+ }
+ free(array2);
+return 0;
 }
